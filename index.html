@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sport Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,800;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div id="total-timer">
+        <span class="total-timer-lable">total time:</span> 00:00:00
+      </div>
+      <div class="header-title">SportTimer</div>
+      <div style="clear: both"></div>
+    </div>
+    <div class="timer">
+      <div id="laps">
+        <div class="lap">Lap 1</div>
+        <div class="lap">Lap 2</div>
+        <div class="lap">Lap 3</div>
+      </div>
+      <div id="sets">
+        <div class="lap">Set 1</div>
+        <div class="lap">Set 2</div>
+        <div class="lap">Set 3</div>
+      </div>
+
+      <div id="timer-text">0</div>
+      <div id="work-or-rest">Work!</div>
+      <div id="time-markers">
+        <div class="time-marker">0</div>
+        <div class="time-marker">|</div>
+        <div class="time-marker">|</div>
+        <div class="time-marker">15</div>
+        <div class="time-marker">|</div>
+        <div class="time-marker">|</div>
+        <div class="time-marker">30</div>
+        <div class="time-marker">|</div>
+        <div class="time-marker">|</div>
+        <div class="time-marker">45</div>
+        <div class="time-marker">|</div>
+        <div class="time-marker">|</div>
+        <div class="time-marker">60</div>
+      </div>
+      <div class="meter-body">
+        <div class="meter-bg"></div>
+        <div id="meter-bar"></div>
+        <div id="time-pointer"></div>
+      </div>
+      <div class="buttons">
+        <div class="control-button start-button" onclick="startTimer();">
+          Start
+        </div>
+        <div class="control-button stop-button" onclick="stopTimer();">
+          Stop
+        </div>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="ctrl-param">
+        <div style="float: left">Active time</div>
+        <div class="ctrl-buttons" style="float: right">
+          <div
+            class="ctrl-button reduce-btn"
+            style="clear: both"
+            onclick="reduceActiveTime();"
+          >
+            -
+          </div>
+          <div id="active-time" class="ctrl-text">15s</div>
+          <div class="ctrl-button add-btn" onclick="addActiveTime();">+</div>
+        </div>
+      </div>
+      <div class="ctrl-param">
+        <div style="float: left">Rest time</div>
+        <div class="ctrl-buttons" style="float: right">
+          <div
+            class="ctrl-button reduce-btn"
+            style="clear: both"
+            onclick="reduceRestTime();"
+          >
+            -
+          </div>
+          <div id="rest-time" class="ctrl-text">15s</div>
+          <div class="ctrl-button add-btn" onclick="addRestTime()">+</div>
+        </div>
+      </div>
+      <div class="ctrl-param">
+        <div style="float: left">Sets count</div>
+        <div class="ctrl-buttons" style="float: right">
+          <div class="ctrl-button reduce-btn" onclick="reduceSets();">-</div>
+          <div id="sets-count" class="ctrl-text">5</div>
+          <div class="ctrl-button add-btn" onclick="addSets();">+</div>
+        </div>
+      </div>
+      <div
+        class="ctrl-param"
+        style="background-color: #f5f5f5; color: #a3a3a3"
+      ></div>
+      <div class="ctrl-param">
+        <div style="float: left">Laps count</div>
+        <div class="ctrl-buttons" style="float: right">
+          <div class="ctrl-button reduce-btn" onclick="reduceLap();">-</div>
+          <div id="laps-count" class="ctrl-text">3</div>
+          <div class="ctrl-button add-btn" onclick="addLap();">+</div>
+        </div>
+      </div>
+      <div class="ctrl-param">
+        <div style="float: left">Laps rest time</div>
+        <div class="ctrl-buttons" style="float: right">
+          <div class="ctrl-button reduce-btn" onclick="reduceLapRestTime();">
+            -
+          </div>
+          <div id="laps-rest" class="ctrl-text">120s</div>
+          <div class="ctrl-button add-btn" onclick="addLapRestTime();">+</div>
+        </div>
+      </div>
+    </div>
+    <div class="sets-names" style="display: none;">
+      <div class="set-name">
+        <span class="set-id">1: </span>
+        <input class="set-text" />
+      </div>
+      <div class="set-name">
+        <span class="set-id">2: </span>
+        <input class="set-text" />
+      </div>
+      <div class="set-name">
+        <span class="set-id">3: </span>
+        <input class="set-text" />
+      </div>
+      <div class="set-name">
+        <span class="set-id">4: </span>
+        <input class="set-text" />
+      </div>
+    </div>
+    <div id="chatbot-container"></div>
+  <script>
+    // Загружаем содержимое чат-бота
+    fetch('https://chat.openai.com/')
+      .then(response => response.text())
+      .then(data => {
+        // Вставляем содержимое чат-бота внутрь элемента div
+        document.getElementById('chatbot-container').innerHTML = data;
+      });
+  </script>
+</body>
+    <script src="script.js"></script>
+  </body>
+</html>
